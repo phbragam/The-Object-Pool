@@ -8,6 +8,7 @@ public class Drive : MonoBehaviour
     public float speed = 10.0f;
     public GameObject bullet;
     public Slider healthbar;
+    public GameObject explosion;
 
     void Update()
     {
@@ -34,5 +35,21 @@ public class Drive : MonoBehaviour
         Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position)
             + new Vector3(0, -36.0120f, 0);
         healthbar.transform.position = screenPos;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            healthbar.value -= 50;
+            collision.gameObject.SetActive(false);
+
+            if (healthbar.value <= 0)
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(healthbar.gameObject, .1f);
+                Destroy(gameObject, .1f);
+            }
+        }
     }
 }

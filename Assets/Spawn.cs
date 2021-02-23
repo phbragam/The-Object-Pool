@@ -14,7 +14,7 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Random.Range(0, 100) < 1)
+        if (Random.Range(0, 100) < 5)
         {
         //Instantiate(asteroid, transform.position + new Vector3(Random.Range(-10, 10), 0, 0), Quaternion.identity);
             GameObject a = Pool.instance.Get("Asteroid");
