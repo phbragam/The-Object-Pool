@@ -15,7 +15,15 @@ public class Drive : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            //Instantiate(bullet, transform.position, Quaternion.identity);
+            GameObject b = Pool.instance.Get("Bullet");
+            // Bullet GameObject was already instantiated in the pool
+            // It's not necessary to instantiate it again
+            if (b != null)
+            {
+                b.transform.position = transform.position;
+                b.SetActive(true);
+            }
         }
     }
 }

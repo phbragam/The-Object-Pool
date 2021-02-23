@@ -17,7 +17,15 @@ public class Spawn : MonoBehaviour
 
         if (Random.Range(0, 100) < 5)
         {
-        Instantiate(asteroid, transform.position + new Vector3(Random.Range(-10, 10), 0, 0), Quaternion.identity);
+            GameObject b = Pool.instance.Get("Asteroid");
+            if (b != null)
+            {
+                b.transform.position = transform.position 
+                    + new Vector3(Random.Range(-10,10), 0, 0);
+                b.SetActive(true);
+            }
+        //Instantiate(asteroid, transform.position + new Vector3(Random.Range(-10, 10), 0, 0), Quaternion.identity);
+
         }
     }
 }
