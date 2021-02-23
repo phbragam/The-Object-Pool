@@ -14,18 +14,19 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Random.Range(0, 100) < 5)
+        if (Random.Range(0, 100) < 1)
         {
-            GameObject b = Pool.instance.Get("Asteroid");
-            if (b != null)
-            {
-                b.transform.position = transform.position 
-                    + new Vector3(Random.Range(-10,10), 0, 0);
-                b.SetActive(true);
-            }
         //Instantiate(asteroid, transform.position + new Vector3(Random.Range(-10, 10), 0, 0), Quaternion.identity);
-
+            GameObject a = Pool.instance.Get("Asteroid");
+            if (a != null)
+            {
+                // Any changes in the pooled object should happen here,
+                // but when you put it back to the pool, you should 
+                // return the values to default
+                a.transform.position = transform.position 
+                    + new Vector3(Random.Range(-10,10), 0, 0);
+                a.SetActive(true);
+            }
         }
     }
 }

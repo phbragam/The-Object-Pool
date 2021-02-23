@@ -9,6 +9,8 @@ public class DestroyInvis : MonoBehaviour
     {
         //Destroy(gameObject);
         //Debug.Log("Destroyed");
+        // If you made any changes in the object after gettint it from the pool,
+        // return everything to default in here
         gameObject.SetActive(false);
     }
 }
